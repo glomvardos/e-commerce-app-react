@@ -1,6 +1,6 @@
 import useSWR, { BareFetcher } from 'swr'
 import { PublicConfiguration } from 'swr/_internal'
-import { tokenMethods } from '../utils'
+import { tokenMethods } from '../features/authentication'
 
 interface IParams<T> {
   queryKey: string

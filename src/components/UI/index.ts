@@ -1,1 +1,6 @@
 export * from './StyledText'
+export * from './StyledSection'
+export * from './StyledCard'
+export * from './StyledGridContainer'
+export * from './StyledButton'
+export * from './StyledSpinner'
