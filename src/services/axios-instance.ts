@@ -2,7 +2,7 @@ import axios from 'axios'
 import { tokenMethods } from '../features/authentication'
 
 const axiosInstance = axios.create({
-  baseURL: process.env.VITE_API_URL_DEV
+  baseURL: import.meta.env.VITE_API_URL_DEV
 })
 
 axiosInstance.interceptors.request.use(

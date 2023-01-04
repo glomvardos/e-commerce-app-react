@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   
   body {
     font-family: 'Manrope', sans-serif;
+    color: var(--primary-text);
   }
   
   * {
