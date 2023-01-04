@@ -13,5 +13,6 @@ export { default as formikValues } from './utils/formik-values'
 export { default as validationSchema } from './utils/validation-schema'
 
 // Components
+export { default as LoginForm } from './components/LoginForm'
 export { default as ProtectedRoutes } from './components/ProtectedRoutes'
 export { default as PublicRoutes } from './components/PublicRoutes'

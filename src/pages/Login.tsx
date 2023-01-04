@@ -1,5 +1,5 @@
 import { StyledSection } from '../components/UI/StyledSection'
-import LoginForm from '../features/authentication/components/LoginForm'
+import { LoginForm } from '../features/authentication'
 
 const Login = () => {
   return (
