@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import { StyledForm, StyledInput } from '../../../components/Form'
@@ -9,9 +10,12 @@ import {
 } from '../../../components/UI'
 import { AuthenticationService, formikValues, validationSchema } from '../index'
 import { toast } from 'react-toastify'
+import routes from '../../../constants/routes'
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: formikValues,
     validationSchema: validationSchema,
@@ -19,7 +23,7 @@ const LoginForm = () => {
       setIsLoading(true)
       AuthenticationService.login(values.username, values.password)
         .then((_) => {
-          toast.success('Login successful')
+          navigate(routes.home)
           setIsLoading(false)
         })
         .catch((error) => {

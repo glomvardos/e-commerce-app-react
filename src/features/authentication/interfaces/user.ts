@@ -7,3 +7,9 @@ export interface UserTypes {
   last_name: string
   user_role: userRoleTypes
 }
+
+export interface UserMethodsInterface {
+  setUser: (user: UserTypes) => void
+  getUser: () => UserTypes | null
+  removeUser: () => void
+}

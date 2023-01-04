@@ -1,13 +1,28 @@
-import { AuthenticationServiceInterface } from '../index'
 import { BaseApi } from '../../../services'
-import { UserTypes } from '../interfaces/user'
+import {
+  AuthenticationServiceInterface,
+  TokenServiceTypes,
+  UserTypes,
+  tokenMethods,
+  userMethods
+} from '../index'
 
 class AuthenticationService
   extends BaseApi
   implements AuthenticationServiceInterface
 {
   public async login(username: string, password: string) {
-    return await this.post('/login/', { username, password })
+    const response = await this.post('/login/', { username, password })
+
+    if (response?.data) {
+      tokenMethods.saveToken(response.data as TokenServiceTypes)
+      const user = await this.getAuthUser()
+
+      if (user) {
+        userMethods.setUser(user)
+      }
+    }
+    return response
   }
 
   public async getAuthUser() {

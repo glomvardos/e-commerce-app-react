@@ -1,13 +1,16 @@
-import { TokenMethodInterface, TokenServiceTypes } from '../../../interfaces'
+import {
+  TokenMethodInterface,
+  TokenServiceTypes
+} from '../interfaces/authentication'
 
 class TokenMethods implements TokenMethodInterface {
-  saveToken({ accessToken, refreshToken }: TokenServiceTypes): void {
-    localStorage.setItem('accessToken', accessToken)
-    localStorage.setItem('refreshToken', refreshToken)
+  saveToken({ access, refresh }: TokenServiceTypes): void {
+    localStorage.setItem('accessToken', access)
+    localStorage.setItem('refreshToken', refresh)
   }
 
-  refreshAccessToken({ accessToken }: TokenServiceTypes): void {
-    localStorage.setItem('accessToken', accessToken)
+  refreshAccessToken({ access }: TokenServiceTypes): void {
+    localStorage.setItem('accessToken', access)
   }
 
   removeToken(): void {
@@ -15,11 +18,11 @@ class TokenMethods implements TokenMethodInterface {
     localStorage.removeItem('refreshToken')
   }
 
-  getAccessToken(): TokenServiceTypes['accessToken'] | null {
+  getAccessToken(): TokenServiceTypes['access'] | null {
     return localStorage.getItem('accessToken')
   }
 
-  getRefreshToken(): TokenServiceTypes['refreshToken'] | null {
+  getRefreshToken(): TokenServiceTypes['refresh'] | null {
     return localStorage.getItem('refreshToken')
   }
 }
