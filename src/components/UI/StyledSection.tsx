@@ -4,7 +4,7 @@ interface StyledProps {
   alignment?: 'center'
 }
 export const StyledSection = styled.section`
-  background-color: var(--bg-color);
+  background-color: var(--border);
   height: 100%;
   padding: 1.25rem;
 

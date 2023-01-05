@@ -7,5 +7,6 @@ export const StyledLogo = styled.div`
   font-weight: 700;
   font-size: 3.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--bg-color);
+  color: var(--secondary);
+  border-bottom: 1px solid var(--secondary);
 `

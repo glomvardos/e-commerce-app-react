@@ -12,7 +12,7 @@ export const StyledSpinner = styled.span`
     animation: bblFadInOut 1.8s infinite ease-in-out;
   }
   & {
-    color: var(--primary-text);
+    color: var(--primary);
     font-size: 5px;
     position: relative;
     text-indent: -9999em;
