@@ -6,12 +6,12 @@ interface StyledProps {
 export const StyledInput = styled.input`
   all: unset;
   font-size: 1rem;
-  background-color: var(--primary-text);
+  background-color: var(--dark);
   color: var(--secondary-text);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   padding: 0.8rem;
   border: ${({ error }: StyledProps) =>
-    error ? '2px solid var(--error)' : '2px solid transparent'};
+    error ? '2px solid var(--error)' : '2px solid var(--primary)'};
   transition: border 0.2s ease-in-out;
 
   &::placeholder {

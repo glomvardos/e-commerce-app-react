@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { StyledCircleAvatar, StyledText } from '../UI'
+import { StyledText } from '../UI'
+import { HeaderDropdown } from './index'
 
 const Header = () => {
   return (
@@ -7,7 +8,8 @@ const Header = () => {
       <StyledText fontSize={18} fontWeight="500">
         E-commerce App Administration
       </StyledText>
-      <StyledCircleAvatar />
+
+      <HeaderDropdown />
     </StyledHeader>
   )
 }

@@ -19,7 +19,7 @@ const SideBar = ({ children }: ChildrenTypes) => {
   return (
     <Styled.SideBar isOpen={isOpen}>
       <StyledLogo>LOGO</StyledLogo>
-      <Styled.Nav>{children}</Styled.Nav>
+      <Styled.Nav isOpen={isOpen}>{children}</Styled.Nav>
       <Styled.NavActionBtn onClick={toggleSideBar} isOpen={isOpen}>
         <HiOutlineChevronDoubleLeft size={20} className="nav-btn-icon" />
       </Styled.NavActionBtn>
