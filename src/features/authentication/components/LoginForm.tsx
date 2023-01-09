@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useFormik } from 'formik'
+import { useTranslation } from 'react-i18next'
 import { StyledForm, StyledInput } from '../../../components/Form'
 import {
   StyledButton,
@@ -13,6 +14,7 @@ import { toast } from 'react-toastify'
 import routes from '../../../constants/routes'
 
 const LoginForm = () => {
+  const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const navigate = useNavigate()
 
@@ -39,18 +41,18 @@ const LoginForm = () => {
         <StyledGridContainer>
           <StyledInput
             type="text"
-            placeholder="Username"
+            placeholder={t<string>('username')}
             error={!!(formik.touched.username && formik.errors.username)}
             {...formik.getFieldProps('username')}
           />
           <StyledInput
             type="password"
-            placeholder="Password"
+            placeholder={t<string>('password')}
             error={!!(formik.touched.password && formik.errors.password)}
             {...formik.getFieldProps('password')}
           />
           <StyledButton type="submit">
-            {isLoading ? <StyledSpinner /> : 'Login'}
+            {isLoading ? <StyledSpinner /> : t('login')}
           </StyledButton>
         </StyledGridContainer>
       </StyledForm>
