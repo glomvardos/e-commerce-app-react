@@ -1,4 +1,4 @@
-import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -8,12 +8,13 @@ interface IProps {
   text: string
 }
 const NavLink = ({ path, text, icon }: IProps) => {
+  const { t } = useTranslation()
   const { pathname } = useLocation()
   const isActivePath = pathname === path
   return (
     <StyledNavLink $isActivePath={isActivePath} to={path}>
       {icon}
-      <span className="nav-link-text">{text}</span>
+      <span className="nav-link-text">{t(text)}</span>
     </StyledNavLink>
   )
 }

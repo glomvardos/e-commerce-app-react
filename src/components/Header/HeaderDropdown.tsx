@@ -14,7 +14,7 @@ const HeaderDropdown = () => {
       <Dropdown isOpen={isOpen}>
         <DropdownItem
           icon={<FiLogOut size={25} />}
-          text="Logout"
+          text="logout"
           onClickHandler={onLogout}
         />
       </Dropdown>

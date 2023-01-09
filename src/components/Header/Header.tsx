@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import { StyledText } from '../UI'
 import { HeaderDropdown } from './index'
-
+import { useTranslation } from 'react-i18next'
 const Header = () => {
+  const { t } = useTranslation()
   return (
     <StyledHeader>
       <StyledText fontSize={18} fontWeight="500">
-        E-commerce App Administration
+        {t('appAdministration')}
       </StyledText>
 
       <HeaderDropdown />

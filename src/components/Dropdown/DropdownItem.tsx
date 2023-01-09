@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   icon?: JSX.Element
@@ -6,10 +7,11 @@ interface IProps {
   onClickHandler: () => void
 }
 const DropdownItem = ({ icon, text, onClickHandler }: IProps) => {
+  const { t } = useTranslation()
   return (
     <StyledDropdownItem type="button" onClick={onClickHandler}>
       {icon}
-      {text}
+      {t(text)}
     </StyledDropdownItem>
   )
 }

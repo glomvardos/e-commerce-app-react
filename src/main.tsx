@@ -4,7 +4,7 @@ import App from './App'
 import { BrowserRouter } from 'react-router-dom'
 
 import GlobalStyles from './global-styles'
-import { i18n } from './features/internationalization'
+import { i18n } from './features/i18n'
 
 i18n
 
