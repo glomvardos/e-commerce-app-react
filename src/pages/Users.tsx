@@ -1,5 +1,12 @@
+import { StyledSection } from '../components/UI'
+import { Outlet } from 'react-router-dom'
+
 const Users = () => {
-  return <div>test</div>
+  return (
+    <StyledSection>
+      <Outlet />
+    </StyledSection>
+  )
 }
 
 export default Users

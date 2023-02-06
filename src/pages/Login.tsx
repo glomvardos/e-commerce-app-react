@@ -3,7 +3,7 @@ import { LoginForm } from '../features/authentication'
 
 const Login = () => {
   return (
-    <StyledSection alignment="center">
+    <StyledSection background="gray" layout="form" alignment="center">
       <LoginForm />
     </StyledSection>
   )

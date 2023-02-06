@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Slide, ToastContainer } from 'react-toastify'
 import { Login, Users } from './pages'
 import { Layout } from './containers'
+import { DisplayUsers } from './features/users'
 import { ProtectedRoutes, PublicRoutes } from './features/authentication'
 import routes from './constants/routes'
 
@@ -16,7 +17,9 @@ const App = () => {
         </Route>
         <Route element={<ProtectedRoutes />}>
           <Route element={<Layout />}>
-            <Route path="/" element={<Users />} />
+            <Route path={routes.home} element={<Users />}>
+              <Route index element={<DisplayUsers />} />
+            </Route>
           </Route>
         </Route>
       </Routes>
