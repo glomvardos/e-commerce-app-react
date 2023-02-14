@@ -21,5 +21,9 @@ export const StyledSection = styled.section`
       display: flex;
       justify-content: center;
       align-items: center;
-    `}
+    `};
+
+  @media (min-width: 1024px) {
+    padding: 3rem;
+  }
 `
