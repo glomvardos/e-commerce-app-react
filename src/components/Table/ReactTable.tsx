@@ -1,12 +1,16 @@
-import { StyledTable } from './StyledTable'
+import {
+  StyledTable,
+  StyledTableContainer,
+  StyledTableOverflowController
+} from './StyledTable'
 import { useGlobalFilter, usePagination, useTable } from 'react-table'
 import { TableBody, TableHead } from './index'
 
-interface IProps {
+interface Props {
   data: any
   columns: any
 }
-const ReactTable = ({ data, columns }: IProps) => {
+const ReactTable = ({ data, columns }: Props) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -27,7 +31,7 @@ const ReactTable = ({ data, columns }: IProps) => {
       columns,
       data,
       initialState: {
-        pageSize: 8
+        pageSize: 5
       }
     },
     useGlobalFilter,
@@ -36,14 +40,18 @@ const ReactTable = ({ data, columns }: IProps) => {
   const { pageIndex, pageSize } = state
 
   return (
-    <StyledTable {...getTableProps()}>
-      <TableHead headerGroups={headerGroups} />
-      <TableBody
-        getTableBodyProps={getTableBodyProps}
-        page={page}
-        prepareRow={prepareRow}
-      />
-    </StyledTable>
+    <StyledTableContainer>
+      <StyledTableOverflowController>
+        <StyledTable {...getTableProps()}>
+          <TableHead headerGroups={headerGroups} />
+          <TableBody
+            getTableBodyProps={getTableBodyProps}
+            page={page}
+            prepareRow={prepareRow}
+          />
+        </StyledTable>
+      </StyledTableOverflowController>
+    </StyledTableContainer>
   )
 }
 

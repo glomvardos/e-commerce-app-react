@@ -2,14 +2,14 @@ import { Row, TableBodyPropGetter, TableBodyProps } from 'react-table'
 import { useNavigate } from 'react-router-dom'
 import { StyledTd } from './StyledTable'
 
-interface IProps {
+interface Props {
   getTableBodyProps: (
     propGetter?: TableBodyPropGetter<object> | undefined
   ) => TableBodyProps
   page: Row<object>[]
   prepareRow: (row: Row<object>) => void
 }
-const TableBody = ({ getTableBodyProps, page, prepareRow }: IProps) => {
+const TableBody = ({ getTableBodyProps, page, prepareRow }: Props) => {
   const navigate = useNavigate()
   return (
     <tbody {...getTableBodyProps()}>
@@ -28,7 +28,6 @@ const TableBody = ({ getTableBodyProps, page, prepareRow }: IProps) => {
                 //     )
                 // }}
                 {...cell.getCellProps()}
-                className="px-2 2xl:px-0 h-[60px]"
               >
                 {cell.render('Cell')}
               </StyledTd>

@@ -2,17 +2,46 @@ import { UserTypes } from '../../authentication'
 import { ReactTable } from '../../../components/Table'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import moment from 'moment'
+import { CellValue } from '../../../interfaces'
+import TableActions from '../../../components/Table/TableActions'
 
-interface IProps {
+interface Props {
   users: UserTypes[]
 }
-const UsersTable = ({ users = [] }: IProps) => {
+const UsersTable = ({ users = [] }: Props) => {
   const { t } = useTranslation()
+
   const columns = useMemo(
     () => [
       {
-        Header: t('fullname')
+        Header: t('Id'),
+        accessor: 'id'
+      },
+      {
+        Header: t('firstname'),
+        accessor: 'first_name'
+      },
+      {
+        Header: t('lastname'),
+        accessor: 'last_name'
+      },
+      {
+        Header: t('email'),
+        accessor: 'email'
+      },
+      {
+        Header: t('role'),
+        accessor: 'user_role',
+        Cell: ({ value }: CellValue) => <span>{t(value)}</span>
+      },
+      {
+        Header: t('actions'),
+        Cell: ({ value }: CellValue) => (
+          <TableActions
+            onClickHandlerDelete={() => {}}
+            onClickHandlerEdit={() => {}}
+          />
+        )
       }
     ],
     [t]
@@ -20,7 +49,7 @@ const UsersTable = ({ users = [] }: IProps) => {
 
   return (
     <>
-      <ReactTable data={users} columns={[]} />
+      <ReactTable data={users} columns={columns} />
     </>
   )
 }

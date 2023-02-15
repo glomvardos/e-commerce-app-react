@@ -1,10 +1,10 @@
 import { HeaderGroup } from 'react-table'
 import { StyledTh } from './StyledTable'
 
-interface IProps {
+interface Props {
   headerGroups: HeaderGroup<object>[]
 }
-const TableHead = ({ headerGroups }: IProps) => {
+const TableHead = ({ headerGroups }: Props) => {
   return (
     <thead>
       {headerGroups.map((headerGroup) => (

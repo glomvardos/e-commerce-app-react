@@ -6,7 +6,15 @@
   "products": "Προϊόντα",
   "categories": "Κατηγορίες",
   "appAdministration": "E-commerce App Διαχείριση",
-  "logout": "Αποσύνδεση"
+  "logout": "Αποσύνδεση",
+  "firstname": "Όνομα",
+  "lastname": "Επώνυμο",
+  "email": "Email",
+  "ADMIN": "Διαχειριστής",
+  "CUSTOMER": "Πελάτης",
+  "actions": "Ενέργειες",
+  "role": "Ρόλος",
+  "addUser": "Προσθήκη Χρήστη"
 }
 
 

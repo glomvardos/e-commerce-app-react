@@ -6,5 +6,13 @@
   "products": "Products",
   "categories": "Categories",
   "appAdministration": "E-commerce App Administration",
-  "logout": "Log out"
+  "logout": "Log out",
+  "firstname": "First name",
+  "lastname": "Last name",
+  "email": "Email",
+  "ADMIN": "Admin",
+  "CUSTOMER": "Customer",
+  "actions": "Actions",
+  "role": "Role",
+  "addUser": "Add user"
 }

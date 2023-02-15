@@ -25,11 +25,15 @@ const StyledHeader = styled.header`
   width: 100%;
   background-color: var(--secondary);
   box-shadow: var(--box-shadow);
-  padding: 10px 35px;
+  padding: 0.625rem 1.25rem;
+
+  @media (min-width: 1024px) {
+    padding: 0.625rem 3rem 10px calc(3rem + 0.9375em);
+  }
 
   @media (min-width: 1600px) {
     position: relative;
-    width: calc(100% + 15px);
-    left: -15px;
+    width: calc(100% + 0.9375em);
+    left: -0.9375em;
   }
 `
