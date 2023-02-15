@@ -10,6 +10,7 @@ import { UsersTable } from '../index'
 import { UserTypes } from '../../authentication'
 import { useNavigate } from 'react-router-dom'
 import routes from '../../../constants/routes'
+import { ConfirmationModal } from '../../common/modal'
 
 const DisplayUsers = () => {
   const { t } = useTranslation()
@@ -21,6 +22,7 @@ const DisplayUsers = () => {
 
   return (
     <>
+      <ConfirmationModal showModal={true} />
       <StyledPageHeader>
         <StyledText fontSize={40} fontWeight="500">
           {t('users')}
