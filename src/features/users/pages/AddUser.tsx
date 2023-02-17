@@ -1,5 +1,3 @@
-const AddUser = () => {
+export function AddUser() {
   return <>test</>
 }
-
-export default AddUser

@@ -1,1 +1,1 @@
-export {default as HttpStatus} from './http-status';
+export { HttpStatus } from './http-status';

@@ -1,11 +1,9 @@
-import { tokenMethods, userMethods } from '../index'
 import { Navigate, Outlet } from 'react-router-dom'
-import routes from '../../../constants/routes'
+import { tokenMethods } from '../index'
+import { routes } from '../../../constants/routes'
 
-const ProtectedRoutes = () => {
+export function ProtectedRoutes() {
   const token = tokenMethods.getAccessToken()
 
-  return !!token ? <Outlet /> : <Navigate to={routes.login} />
+  return token ? <Outlet /> : <Navigate to={routes.login} />
 }
-
-export default ProtectedRoutes

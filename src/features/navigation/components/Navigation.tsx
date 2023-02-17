@@ -2,7 +2,7 @@ import { FiList, FiUsers } from 'react-icons/fi'
 import { BiCategoryAlt } from 'react-icons/bi'
 import { NavLink, SideBar } from '../index'
 
-const Navigation = () => {
+export function Navigation() {
   return (
     <SideBar>
       <NavLink icon={<FiUsers size={26} />} path="/" text="users" />
@@ -15,5 +15,3 @@ const Navigation = () => {
     </SideBar>
   )
 }
-
-export default Navigation

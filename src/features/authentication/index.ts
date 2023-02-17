@@ -9,10 +9,10 @@ export * from './interfaces/authentication'
 // Utils
 export { default as tokenMethods } from './utils/token-methods'
 export { default as userMethods } from './utils/user-methods'
-export { default as formikValues } from './utils/formik-values'
-export { default as validationSchema } from './utils/validation-schema'
+export { formikValues } from './utils/formik-values'
+export { validationSchema } from './utils/validation-schema'
 
 // Components
-export { default as LoginForm } from './components/LoginForm'
-export { default as ProtectedRoutes } from './components/ProtectedRoutes'
-export { default as PublicRoutes } from './components/PublicRoutes'
+export { LoginForm } from './components/LoginForm'
+export { ProtectedRoutes } from './components/ProtectedRoutes'
+export { PublicRoutes } from './components/PublicRoutes'

@@ -11,11 +11,9 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  background-color: ${({ color }: StyledProps) =>
-    color === 'primary' ? 'var(--primary)' : 'var(--secondary)'};
+  background-color: ${({ color }: StyledProps) => (color === 'primary' ? 'var(--primary)' : 'var(--secondary)')};
   border-radius: var(--border-radius);
-  color: ${({ color }: StyledProps) =>
-    color === 'primary' ? 'var(--light)' : 'var(--primary)'};
+  color: ${({ color }: StyledProps) => (color === 'primary' ? 'var(--light)' : 'var(--primary)')};
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
 

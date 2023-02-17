@@ -1,5 +1,4 @@
-const formikValues = {
+export const formikValues = {
   username: '',
   password: ''
 }
-export default formikValues

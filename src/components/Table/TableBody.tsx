@@ -9,7 +9,7 @@ interface Props {
   page: Row<object>[]
   prepareRow: (row: Row<object>) => void
 }
-const TableBody = ({ getTableBodyProps, page, prepareRow }: Props) => {
+export function TableBody({ getTableBodyProps, page, prepareRow }: Props) {
   const navigate = useNavigate()
   return (
     <tbody {...getTableBodyProps()}>
@@ -38,5 +38,3 @@ const TableBody = ({ getTableBodyProps, page, prepareRow }: Props) => {
     </tbody>
   )
 }
-
-export default TableBody

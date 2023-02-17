@@ -13,13 +13,15 @@ const modalContextReducer = (
         ...state,
         showModal: true,
         modalMessage: action.payload.modalMessage,
-        resourceId: action.payload.resourceId
+        resourceId: action.payload.resourceId,
+        mutateKey: action.payload.mutateKey
       }
     case 'CLOSE_MODAL':
       return {
         ...state,
         showModal: false,
         modalMessage: '',
+        mutateKey: '',
         resourceId: null
       }
     default:

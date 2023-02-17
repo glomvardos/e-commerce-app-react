@@ -1,9 +1,9 @@
-import { axiosInstance } from './index'
 import axios, { AxiosResponse } from 'axios'
+import { axiosInstance } from './index'
 import { exception } from '../utils'
 
 abstract class BaseApi {
-  protected async get<T>(url: string): Promise<T | undefined> {
+  protected async get<T>(url: string): Promise<T | null> {
     try {
       const response = await axiosInstance.get(url)
       return response.data as T
@@ -12,11 +12,13 @@ abstract class BaseApi {
         exception(error)
       }
     }
+    return null
   }
+
   protected async post(
     url: string,
     data: unknown
-  ): Promise<AxiosResponse | undefined> {
+  ): Promise<AxiosResponse | null> {
     try {
       return await axiosInstance.post(url, data)
     } catch (error) {
@@ -24,6 +26,18 @@ abstract class BaseApi {
         exception(error)
       }
     }
+    return null
+  }
+
+  protected async delete(url: string): Promise<AxiosResponse | null> {
+    try {
+      return await axiosInstance.delete(url)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        exception(error)
+      }
+    }
+    return null
   }
 }
 

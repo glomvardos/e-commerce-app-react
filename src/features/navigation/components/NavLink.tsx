@@ -7,19 +7,6 @@ interface IProps {
   path: string
   text: string
 }
-const NavLink = ({ path, text, icon }: IProps) => {
-  const { t } = useTranslation()
-  const { pathname } = useLocation()
-  const isActivePath = pathname === path
-  return (
-    <StyledNavLink $isActivePath={isActivePath} to={path}>
-      {icon}
-      <span className="nav-link-text">{t(text)}</span>
-    </StyledNavLink>
-  )
-}
-
-export default NavLink
 
 interface StyledProps {
   $isActivePath: boolean
@@ -31,8 +18,7 @@ const StyledNavLink = styled(Link)`
   align-items: center;
   width: 100%;
   padding: 20px;
-  background-color: ${({ $isActivePath }: StyledProps) =>
-    $isActivePath ? 'var(--active-nav-link)' : 'transparent'};
+  background-color: ${({ $isActivePath }: StyledProps) => ($isActivePath ? 'var(--active-nav-link)' : 'transparent')};
   border-radius: var(--border-radius);
 
   .nav-link-text {
@@ -45,3 +31,16 @@ const StyledNavLink = styled(Link)`
     }
   }
 `
+
+export function NavLink({ path, text, icon }: IProps) {
+  const { t } = useTranslation()
+  const { pathname } = useLocation()
+  const isActivePath = pathname === path
+  return (
+    <StyledNavLink $isActivePath={isActivePath} to={path}>
+      {icon}
+      <span className="nav-link-text">{t(text)}</span>
+    </StyledNavLink>
+
+  )
+}

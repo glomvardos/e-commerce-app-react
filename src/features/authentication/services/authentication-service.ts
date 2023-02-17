@@ -9,8 +9,7 @@ import {
 
 class AuthenticationService
   extends BaseApi
-  implements AuthenticationServiceInterface
-{
+  implements AuthenticationServiceInterface {
   public async login(username: string, password: string) {
     const response = await this.post('/login/', { username, password })
 

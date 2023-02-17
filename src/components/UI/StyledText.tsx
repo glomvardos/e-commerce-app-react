@@ -6,9 +6,7 @@ interface StyledProps {
   color?: 'var(--primary-text)' | 'var(--secondary-text)'
 }
 export const StyledText = styled.p`
-  font-weight: ${({ fontWeight }: StyledProps) =>
-    fontWeight ? fontWeight : '400'};
-  font-size: ${({ fontSize }: StyledProps) =>
-    fontSize ? `${fontSize}px` : '16px'};
-  color: ${({ color }: StyledProps) => (color ? color : 'var(--primary-text)')};
+  font-weight: ${({ fontWeight }: StyledProps) => (fontWeight || '400')};
+  font-size: ${({ fontSize }: StyledProps) => (fontSize ? `${fontSize}px` : '16px')};
+  color: ${({ color }: StyledProps) => (color || 'var(--primary-text)')};
 `

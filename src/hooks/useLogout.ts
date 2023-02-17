@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import routes from '../constants/routes'
+import { routes } from '../constants/routes'
 
-const useLogout = () => {
+export const useLogout = () => {
   const navigate = useNavigate()
   const onLogout = () => {
     localStorage.clear()
@@ -12,5 +12,3 @@ const useLogout = () => {
     onLogout
   }
 }
-
-export default useLogout

@@ -1,5 +1,4 @@
 import useSWR, { BareFetcher, KeyedMutator } from 'swr'
-import { PublicConfiguration } from 'swr/_internal'
 import { tokenMethods } from '../features/authentication'
 
 interface IData<T> {
@@ -9,15 +8,18 @@ interface IData<T> {
   isValidating: boolean
   isLoading: boolean
 }
-interface IParams<T> {
+interface IParams {
   queryKey: string
   queryFn: any
 }
 
-const useFetchData = <T extends unknown>({ queryKey, queryFn }: IParams<T>) => {
+export const useFetchData = <T extends unknown>({ queryKey, queryFn }: IParams) => {
   const token = tokenMethods.getAccessToken()
-  const { data, error, mutate, isValidating, isLoading } = useSWR<T>(
-    !!token ? queryKey : null,
+  const {
+    data, error, mutate, isValidating, isLoading
+  } = useSWR<T>(
+
+    token ? queryKey : null,
     queryFn as BareFetcher<T>
   )
 
@@ -29,5 +31,3 @@ const useFetchData = <T extends unknown>({ queryKey, queryFn }: IParams<T>) => {
     isLoading
   } as IData<T>
 }
-
-export default useFetchData

@@ -6,18 +6,13 @@ interface StyledProps {
   layout?: 'dashboard' | 'form'
 }
 export const StyledSection = styled.section`
-  background-color: ${({ background }: StyledProps) =>
-    background === 'gray' ? 'var(--border)' : 'var(--light)'};
-
-  height: ${({ layout }: StyledProps) =>
-    layout === 'form' ? '100%' : 'calc(100% - 65px)'};
-
+  background-color: ${({ background }: StyledProps) => (background === 'gray' ? 'var(--border)' : 'var(--light)')};
+  height: ${({ layout }: StyledProps) => (layout === 'form' ? '100%' : 'calc(100% - 65px)')};
   padding: 1.25rem;
   overflow-y: auto;
 
-  ${({ alignment }: StyledProps) =>
-    alignment === 'center' &&
-    css`
+  ${({ alignment }: StyledProps) => alignment === 'center'
+    && css`
       display: flex;
       justify-content: center;
       align-items: center;

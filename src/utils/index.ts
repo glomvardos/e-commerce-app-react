@@ -1,1 +1,1 @@
-export { default as exception } from './exception'
+export * from './exception'

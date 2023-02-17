@@ -1,5 +1,5 @@
 export interface ModalContextInterface {
-  state: ModalStateInterface
+  modalState: ModalStateInterface
   openModalHandler: ({
     message,
     resourceId,
@@ -17,13 +17,13 @@ export interface ModalStateInterface {
 
 export type ModalActionTypes =
   | {
-      type: 'OPEN_MODAL'
-      payload: {
-        modalMessage: ModalStateInterface['modalMessage']
-        resourceId: ModalStateInterface['resourceId']
-        mutateKey: ModalStateInterface['mutateKey']
-      }
+    type: 'OPEN_MODAL'
+    payload: {
+      modalMessage: ModalStateInterface['modalMessage']
+      resourceId: ModalStateInterface['resourceId']
+      mutateKey: ModalStateInterface['mutateKey']
     }
+  }
   | { type: 'CLOSE_MODAL' }
 
 export interface OpenModalHandlerInterface {

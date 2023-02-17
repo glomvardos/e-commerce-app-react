@@ -4,11 +4,6 @@ import { ChildrenTypes } from '../../interfaces'
 interface IProps extends ChildrenTypes {
   isOpen: boolean
 }
-const Dropdown = ({ isOpen, children }: IProps) => {
-  return <StyledDropdown isOpen={isOpen}>{children}</StyledDropdown>
-}
-
-export default Dropdown
 
 interface StyledProps {
   isOpen: boolean
@@ -27,14 +22,16 @@ export const StyledDropdown = styled.div`
   transform-origin: top right;
   transition: var(--transition);
 
-  ${({ isOpen }: StyledProps) =>
-    isOpen
-      ? css`
+  ${({ isOpen }: StyledProps) => (isOpen
+    ? css`
           transform: scale(1);
           opacity: 1;
         `
-      : css`
+    : css`
           transform: scale(0);
           opacity: 0;
-        `}
+        `)}
 `
+export function Dropdown({ isOpen, children }: IProps) {
+  return <StyledDropdown isOpen={isOpen}>{children}</StyledDropdown>
+}

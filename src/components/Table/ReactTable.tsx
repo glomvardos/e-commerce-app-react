@@ -1,20 +1,21 @@
+import { useGlobalFilter, usePagination, useTable } from 'react-table'
 import {
   StyledTable,
   StyledTableContainer,
   StyledTableOverflowController
 } from './StyledTable'
-import { useGlobalFilter, usePagination, useTable } from 'react-table'
 import { TableBody, TableHead } from './index'
 
 interface Props {
   data: any
   columns: any
 }
-const ReactTable = ({ data, columns }: Props) => {
+export function ReactTable({ data, columns }: Props) {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+
     prepareRow,
     page,
     nextPage,
@@ -54,5 +55,3 @@ const ReactTable = ({ data, columns }: Props) => {
     </StyledTableContainer>
   )
 }
-
-export default ReactTable

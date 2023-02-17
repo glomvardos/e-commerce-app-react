@@ -4,7 +4,7 @@ import { StyledTh } from './StyledTable'
 interface Props {
   headerGroups: HeaderGroup<object>[]
 }
-const TableHead = ({ headerGroups }: Props) => {
+export function TableHead({ headerGroups }: Props) {
   return (
     <thead>
       {headerGroups.map((headerGroup) => (
@@ -19,5 +19,3 @@ const TableHead = ({ headerGroups }: Props) => {
     </thead>
   )
 }
-
-export default TableHead

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 import { StyledForm, StyledInput } from '../../../components/Form'
 import {
   StyledButton,
@@ -10,21 +11,20 @@ import {
   StyledSpinner
 } from '../../../components/UI'
 import { AuthenticationService, formikValues, validationSchema } from '../index'
-import { toast } from 'react-toastify'
-import routes from '../../../constants/routes'
+import { routes } from '../../../constants/routes'
 
-const LoginForm = () => {
+export function LoginForm() {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: formikValues,
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: (values) => {
       setIsLoading(true)
       AuthenticationService.login(values.username, values.password)
-        .then((_) => {
+        .then(() => {
           navigate(routes.home)
           setIsLoading(false)
         })
@@ -59,5 +59,3 @@ const LoginForm = () => {
     </StyledCard>
   )
 }
-
-export default LoginForm

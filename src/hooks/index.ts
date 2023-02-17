@@ -1,4 +1,4 @@
-export { default as useFetchData } from './useFetchData'
-export { default as useMutation } from './useMutation'
-export { default as useToggleMenu } from './useToggleMenu'
-export { default as useLogout } from './useLogout'
+export { useFetchData } from './useFetchData'
+export { useMutation } from './useMutation'
+export { useToggleMenu } from './useToggleMenu'
+export { useLogout } from './useLogout'

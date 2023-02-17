@@ -6,16 +6,6 @@ interface Props {
   onClickHandlerEdit?: () => void
   onClickHandlerDelete?: () => void
 }
-const TableActions = ({ onClickHandlerEdit, onClickHandlerDelete }: Props) => {
-  return (
-    <StyledContainer>
-      {onClickHandlerEdit && <FiEdit className="edit" size={20} />}
-      {onClickHandlerDelete && <MdDelete className="delete" size={20} />}
-    </StyledContainer>
-  )
-}
-
-export default TableActions
 
 const StyledContainer = styled.div`
   display: flex;
@@ -40,3 +30,15 @@ const StyledContainer = styled.div`
     color: var(--error);
   }
 `
+export function TableActions({ onClickHandlerEdit, onClickHandlerDelete }: Props) {
+  return (
+    <StyledContainer>
+      {onClickHandlerEdit && (
+        <FiEdit className="edit" size={20} onClick={onClickHandlerEdit} />
+      )}
+      {onClickHandlerDelete && (
+        <MdDelete className="delete" size={20} onClick={onClickHandlerDelete} />
+      )}
+    </StyledContainer>
+  )
+}

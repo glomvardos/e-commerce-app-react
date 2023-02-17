@@ -6,18 +6,6 @@ interface IProps {
   text: string
   onClickHandler: () => void
 }
-const DropdownItem = ({ icon, text, onClickHandler }: IProps) => {
-  const { t } = useTranslation()
-  return (
-    <StyledDropdownItem type="button" onClick={onClickHandler}>
-      {icon}
-      {t(text)}
-    </StyledDropdownItem>
-  )
-}
-
-export default DropdownItem
-
 export const StyledDropdownItem = styled.button`
   all: unset;
   cursor: pointer;
@@ -34,4 +22,15 @@ export const StyledDropdownItem = styled.button`
   &:hover {
     background-color: var(--secondary);
   }
-`
+  `
+export function DropdownItem({ icon, text, onClickHandler }: IProps) {
+  const { t } = useTranslation()
+  return (
+    <StyledDropdownItem type="button" onClick={onClickHandler}>
+      {icon}
+      {t(text)}
+    </StyledDropdownItem>
+  )
+}
+
+export default DropdownItem

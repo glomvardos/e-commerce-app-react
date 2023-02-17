@@ -2,13 +2,13 @@ import { createContext } from 'react'
 import { ModalContextInterface } from './modal-context.interface'
 
 const ModalContext = createContext<ModalContextInterface>({
-  state: {
+  modalState: {
     showModal: false,
     modalMessage: '',
     resourceId: null,
     mutateKey: ''
   },
-  openModalHandler: ({ message, resourceId, mutateKey }) => {},
+  openModalHandler: () => {},
   closeModalHandler: () => {}
 })
 

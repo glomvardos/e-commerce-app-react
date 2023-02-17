@@ -1,10 +1,8 @@
-import { tokenMethods } from '../index'
 import { Navigate, Outlet } from 'react-router-dom'
-import routes from '../../../constants/routes'
+import { tokenMethods } from '../index'
+import { routes } from '../../../constants/routes'
 
-const PublicRoutes = () => {
+export function PublicRoutes() {
   const token = tokenMethods.getAccessToken()
-  return !!!token ? <Outlet /> : <Navigate to={routes.home} />
+  return !token ? <Outlet /> : <Navigate to={routes.home} />
 }
-
-export default PublicRoutes

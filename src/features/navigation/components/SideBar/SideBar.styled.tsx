@@ -15,19 +15,18 @@ export const SideBar = styled.div`
   transition: var(--transition);
   z-index: 10;
 
-  ${({ isOpen }: StyledProps) =>
-    isOpen
-      ? css`
+  ${({ isOpen }: StyledProps) => (isOpen
+    ? css`
           max-width: 105px;
           @media (min-width: 1600px) {
             max-width: 330px;
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
           }
         `
-      : css`
+    : css`
           max-width: 105px;
           border-radius: 0;
-        `};
+        `)};
 `
 
 export const Nav = styled.nav`
@@ -38,20 +37,19 @@ export const Nav = styled.nav`
   gap: 20px;
   transition: var(--transition);
 
-  ${({ isOpen }: StyledProps) =>
-    isOpen
-      ? css`
+  ${({ isOpen }: StyledProps) => (isOpen
+    ? css`
           & .nav-link-text {
             transition: var(--transition);
             font-size: 25px;
           }
         `
-      : css`
+    : css`
           & .nav-link-text {
             transform: scale(0);
             position: absolute;
           }
-        `};
+        `)};
 `
 
 export const NavActionBtn = styled.button`
@@ -68,9 +66,8 @@ export const NavActionBtn = styled.button`
   cursor: pointer;
   transition: var(--transition);
 
-  transform: ${({ isOpen }: StyledProps) =>
-    isOpen ? 'rotate(0deg)' : 'rotate(180deg)'};
-
+  transform: ${({ isOpen }: StyledProps) => (isOpen ? 'rotate(0deg)' : 'rotate(180deg)')};
+  
   &:hover {
     border: 1px solid var(--border);
     color: var(--border);

@@ -1,0 +1,56 @@
+{
+"extends": [
+  "eslint:recommended",
+  "plugin:react/recommended",
+  "plugin:react-hooks/recommended",
+  "airbnb",
+  "airbnb-typescript"
+  ],
+"rules": {
+"react/jsx-filename-extension": "off",
+"react/jsx-props-no-spreading": "off",
+"@typescript-eslint/no-unused-vars": "warn",
+ "@typescript-eslint/return-await": "off",
+  "react/no-unstable-nested-components": "off",
+"react/prop-types": "off",
+"react/require-default-props": "off",
+"react/react-in-jsx-scope": "off",
+"@typescript-eslint/semi": "off",
+"import/extensions": "off",
+  "import/no-cycle": "off",
+  "import/prefer-default-export": "off",
+"class-methods-use-this": "off",
+"quotes": [
+  "error",
+  "single",
+  {
+    "avoidEscape": true
+  }
+  ],
+"@typescript-eslint/comma-dangle": [
+  "error",
+  "never"
+    ]
+  },
+"globals": {
+"React": true,
+"JSX": true
+  },
+"parserOptions": {
+"project": [
+"./tsconfig.json"
+]
+},
+"settings": {
+"import/resolver": {
+"node": {
+"extensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx"
+      ]
+     }
+    }
+  }
+}

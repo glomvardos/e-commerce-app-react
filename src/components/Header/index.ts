@@ -1,2 +1,2 @@
-export { default as Header } from './Header'
-export { default as HeaderDropdown } from './HeaderDropdown'
+export { Header } from './Header'
+export { HeaderDropdown } from './HeaderDropdown'

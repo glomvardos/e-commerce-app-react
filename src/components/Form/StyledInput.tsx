@@ -10,8 +10,7 @@ export const StyledInput = styled.input`
   color: var(--secondary-text);
   border-radius: var(--border-radius);
   padding: 0.8rem;
-  border: ${({ error }: StyledProps) =>
-    error ? '2px solid var(--error)' : '2px solid var(--primary)'};
+  border: ${({ error }: StyledProps) => (error ? '2px solid var(--error)' : '2px solid var(--primary)')};
   transition: border 0.2s ease-in-out;
 
   &::placeholder {
@@ -21,7 +20,6 @@ export const StyledInput = styled.input`
   &:focus,
   &:hover {
     outline: none;
-    border: ${({ error }: StyledProps) =>
-      error ? '2px solid var(--error)' : '2px solid var(--secondary)'};
+    border: ${({ error }: StyledProps) => (error ? '2px solid var(--error)' : '2px solid var(--secondary)')};
   }
 `

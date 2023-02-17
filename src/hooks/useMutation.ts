@@ -1,13 +1,23 @@
 import useSWRMutation from 'swr/mutation'
 
-interface IParams {
+interface IParams<T> {
   mutateKey: string
-  mutateFn: (key: string, options: Readonly<{ arg: any }>) => any
+  mutateFn: (key: string, options: Readonly<{ arg: T }>) => any
 }
-const useMutation = ({ mutateKey, mutateFn }: IParams) => {
-  const { data, error, isMutating, trigger } = useSWRMutation(
+export const useMutation = <T extends unknown>({
+  mutateKey,
+  mutateFn
+}: IParams<T>) => {
+  const {
+    data, error, isMutating, trigger
+  } = useSWRMutation(
     mutateKey,
     mutateFn
+    // {
+    //   onError: (error) => {
+    //     toast.error<string>(error.message)
+    //   }
+    // }
   )
 
   return {
@@ -17,4 +27,3 @@ const useMutation = ({ mutateKey, mutateFn }: IParams) => {
     trigger
   }
 }
-export default useMutation

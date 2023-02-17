@@ -1,7 +1,7 @@
-import { StyledSection } from '../components/UI'
 import { Outlet } from 'react-router-dom'
+import { StyledSection } from '../components/UI'
 
-const Users = () => {
+export function Users() {
   return (
     <StyledSection>
       <Outlet />

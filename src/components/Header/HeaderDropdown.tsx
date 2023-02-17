@@ -4,7 +4,10 @@ import { StyledCircleAvatar } from '../UI'
 import { Dropdown, DropdownItem } from '../Dropdown'
 import { useLogout, useToggleMenu } from '../../hooks'
 
-const HeaderDropdown = () => {
+const StyledHeaderDropdown = styled.div`
+  position: relative;
+`
+export function HeaderDropdown() {
   const { ref, isOpen, toggleMenuHandler } = useToggleMenu()
   const { onLogout } = useLogout()
 
@@ -21,9 +24,3 @@ const HeaderDropdown = () => {
     </StyledHeaderDropdown>
   )
 }
-
-export default HeaderDropdown
-
-const StyledHeaderDropdown = styled.div`
-  position: relative;
-`

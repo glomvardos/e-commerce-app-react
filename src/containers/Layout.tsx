@@ -3,7 +3,7 @@ import { Navigation } from '../features/navigation'
 import { StyledLayoutContainer } from '../components/UI'
 import { Header } from '../components/Header'
 
-const Layout = () => {
+export function Layout() {
   return (
     <StyledLayoutContainer>
       <Navigation />
@@ -14,5 +14,3 @@ const Layout = () => {
     </StyledLayoutContainer>
   )
 }
-
-export default Layout

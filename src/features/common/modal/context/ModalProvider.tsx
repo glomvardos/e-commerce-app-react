@@ -8,7 +8,7 @@ import {
 } from './modal-context.interface'
 import modalContextReducer from './modal-context.reducer'
 
-export const useModal = (): ModalContextInterface => useContext(ModalContext)
+export const useModalContext = (): ModalContextInterface => useContext(ModalContext)
 
 const initialState: ModalStateInterface = {
   showModal: false,
@@ -17,7 +17,7 @@ const initialState: ModalStateInterface = {
   mutateKey: ''
 }
 
-const ModalProvider = ({ children }: ChildrenTypes) => {
+export function ModalProvider({ children }: ChildrenTypes) {
   const [state, dispatch] = useReducer(modalContextReducer, initialState)
 
   const openModalHandler = ({
@@ -43,7 +43,7 @@ const ModalProvider = ({ children }: ChildrenTypes) => {
 
   const ctx = useMemo(
     () => ({
-      state,
+      modalState: state,
       openModalHandler,
       closeModalHandler
     }),
@@ -52,5 +52,3 @@ const ModalProvider = ({ children }: ChildrenTypes) => {
 
   return <ModalContext.Provider value={ctx}>{children}</ModalContext.Provider>
 }
-
-export default ModalProvider

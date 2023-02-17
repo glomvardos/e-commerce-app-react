@@ -4,11 +4,11 @@ import { Login, Users } from './pages'
 import { Layout } from './containers'
 import { AddUser, DisplayUsers } from './features/users'
 import { ProtectedRoutes, PublicRoutes } from './features/authentication'
-import routes from './constants/routes'
+import { routes } from './constants/routes'
 
 import 'react-toastify/dist/ReactToastify.css'
 
-const App = () => {
+function App() {
   return (
     <>
       <Routes>

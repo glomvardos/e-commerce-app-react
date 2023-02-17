@@ -1,16 +1,16 @@
-import { UserTypes } from '../../authentication'
-import { ReactTable } from '../../../components/Table'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { CellValue } from '../../../interfaces'
-import TableActions from '../../../components/Table/TableActions'
+import { UserTypes } from '../../authentication'
+import { ReactTable, TableActions } from '../../../components/Table'
+import { CellValue, OriginalRowTypes } from '../../../interfaces'
+import { useModalContext } from '../../common/modal'
 
 interface Props {
   users: UserTypes[]
 }
-const UsersTable = ({ users = [] }: Props) => {
+export function UsersTable({ users = [] }: Props) {
   const { t } = useTranslation()
-
+  const { openModalHandler } = useModalContext()
   const columns = useMemo(
     () => [
       {
@@ -36,21 +36,23 @@ const UsersTable = ({ users = [] }: Props) => {
       },
       {
         Header: t('actions'),
-        Cell: ({ value }: CellValue) => (
+        Cell: ({ row: { original } }: OriginalRowTypes<UserTypes>) => (
           <TableActions
-            onClickHandlerDelete={() => {}}
             onClickHandlerEdit={() => {}}
+            onClickHandlerDelete={() => openModalHandler({
+              message: 'deleteUserMessage',
+              resourceId: original.id,
+              mutateKey: 'users'
+            })}
           />
         )
       }
     ],
-    [t]
+    [t, openModalHandler]
   )
 
   return (
-    <>
-      <ReactTable data={users} columns={columns} />
-    </>
+    <ReactTable data={users} columns={columns} />
   )
 }
 

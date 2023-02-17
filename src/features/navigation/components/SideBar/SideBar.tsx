@@ -4,7 +4,7 @@ import { StyledLogo } from '../../index'
 import { ChildrenTypes } from '../../../../interfaces'
 import * as Styled from './SideBar.styled'
 
-const SideBar = ({ children }: ChildrenTypes) => {
+export function SideBar({ children }: ChildrenTypes) {
   const isSideBarOpen = localStorage.getItem('sidebar')
 
   const [isOpen, setIsOpen] = useState<boolean>(
@@ -26,5 +26,3 @@ const SideBar = ({ children }: ChildrenTypes) => {
     </Styled.SideBar>
   )
 }
-
-export default SideBar

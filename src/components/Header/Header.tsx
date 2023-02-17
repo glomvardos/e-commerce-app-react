@@ -1,21 +1,7 @@
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { StyledText } from '../UI'
 import { HeaderDropdown } from './index'
-import { useTranslation } from 'react-i18next'
-const Header = () => {
-  const { t } = useTranslation()
-  return (
-    <StyledHeader>
-      <StyledText fontSize={18} fontWeight="500">
-        {t('appAdministration')}
-      </StyledText>
-
-      <HeaderDropdown />
-    </StyledHeader>
-  )
-}
-
-export default Header
 
 const StyledHeader = styled.header`
   display: flex;
@@ -37,3 +23,15 @@ const StyledHeader = styled.header`
     left: -0.9375em;
   }
 `
+export function Header() {
+  const { t } = useTranslation()
+  return (
+    <StyledHeader>
+      <StyledText fontSize={18} fontWeight="500">
+        {t('appAdministration')}
+      </StyledText>
+
+      <HeaderDropdown />
+    </StyledHeader>
+  )
+}

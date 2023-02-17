@@ -1,7 +1,7 @@
 // Components
-export { default as BaseModal } from './components/BaseModal'
-export { default as ConfirmationModal } from './components/ConfirmationModal'
+export { BaseModal } from './components/BaseModal'
+export { ConfirmationModal } from './components/ConfirmationModal'
+export { StyledModalButton } from './components/StyledModalButton'
 
 // Context
-export { default as ModalProvider } from './context/ModalProvider'
 export * from './context/ModalProvider'
