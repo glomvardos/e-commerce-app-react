@@ -1,4 +1,5 @@
 export { ReactTable } from './ReactTable'
+export { TablePagination } from './TablePagination/TablePagination'
 export { TableHead } from './TableHead'
 export { TableBody } from './TableBody'
 export { TableActions } from './TableActions'

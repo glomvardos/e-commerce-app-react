@@ -4,7 +4,7 @@ import {
   StyledTableContainer,
   StyledTableOverflowController
 } from './StyledTable'
-import { TableBody, TableHead } from './index'
+import { TableBody, TableHead, TablePagination } from './index'
 
 interface Props {
   data: any
@@ -51,6 +51,16 @@ export function ReactTable({ data, columns }: Props) {
             prepareRow={prepareRow}
           />
         </StyledTable>
+        <TablePagination
+          pageSize={pageSize}
+          pageIndex={pageIndex}
+          pageLength={page.length}
+          previousPage={previousPage}
+          canPreviousPage={canPreviousPage}
+          nextPage={nextPage}
+          canNextPage={canNextPage}
+          pageOptions={pageOptions}
+        />
       </StyledTableOverflowController>
     </StyledTableContainer>
   )
