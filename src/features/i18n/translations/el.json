@@ -17,7 +17,19 @@
   "addUser": "Προσθήκη Χρήστη",
   "noCancel": "Όχι, Ακύρωση",
   "yesDelete": "Ναι, Διαγραφή",
-  "deleteUserMessage":  "Είστε σίγουροι ότι θέλετε να διαγράψετε τον χρήστη"
+  "deleteUserMessage":  "Είστε σίγουροι ότι θέλετε να διαγράψετε τον χρήστη",
+  "createUser": "Δημιουργία Χρήστη",
+  "confirmPassword": "Επιβεβαίωση κωδικού",
+  "cancel": "Ακύρωση",
+  "back": "Πίσω",
+  "requiredUsername": "Απαιτείται όνομα χρήστη",
+  "requiredFirstname": "Απαιτείται όνομα",
+  "requiredLastname": "Απαιτείται επώνυμο",
+  "requiredEmail": "Απαιτείται email",
+  "requiredPassword": "Απαιτείται κωδικός",
+  "requiredConfirmPassword": "Απαιτείται επιβεβαίωση κωδικού",
+  "passwordsMustMatch": "Οι κωδικοί πρέπει να ταιριάζουν",
+  "mustBeValidEmail": "Πρέπει να είναι έγκυρο email"
 }
 
 

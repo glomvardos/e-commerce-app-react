@@ -4,8 +4,7 @@ interface StyledProps {
   error?: boolean
   background?: string
 }
-export const StyledInput = styled.input`
-  all: unset;
+export const StyledSelect = styled.select`
   font-size: 1rem;
   background-color: ${({ background }: StyledProps) => background || 'var(--dark)'};
   color: ${({ background }: StyledProps) => (background ? 'var(--dark)' : 'var(--secondary-text)')};
@@ -22,5 +21,4 @@ export const StyledInput = styled.input`
   &:hover {
     outline: none;
     border: ${({ error }: StyledProps) => (error ? '2px solid var(--error)' : '2px solid var(--secondary)')};
-  }
-`
+  }`

@@ -17,5 +17,17 @@
   "addUser": "Add user",
   "noCancel": "No, Cancel",
   "yesDelete": "Yes, Delete",
-  "deleteUserMessage": "Are you sure you want to delete this user?"
+  "deleteUserMessage": "Are you sure you want to delete this user?",
+  "createUser": "Create user",
+  "confirmPassword": "Confirm password",
+  "cancel": "Cancel",
+  "back": "Back",
+  "requiredUsername": "Username is required",
+  "requiredFirstname": "First name is required",
+  "requiredLastname": "Last name is required",
+  "requiredEmail": "Email is required",
+  "requiredPassword": "Password is required",
+  "requiredConfirmPassword": "Confirm password is required",
+  "passwordsMustMatch": "Passwords must match",
+  "mustBeValidEmail": "Must be a valid email"
 }
