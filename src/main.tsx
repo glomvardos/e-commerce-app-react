@@ -11,12 +11,10 @@ import { ModalProvider } from './features/common/modal'
 i18n
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <ModalProvider>
-        <GlobalStyles />
-        <App />
-      </ModalProvider>
-    </React.StrictMode>
-  </BrowserRouter>
+  <React.StrictMode>
+    <ModalProvider>
+      <GlobalStyles />
+      <App />
+    </ModalProvider>
+  </React.StrictMode>
 )
