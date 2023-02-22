@@ -6,7 +6,7 @@ import { UserFormTypes } from '../interfaces/user-form'
 import { useMutation } from '../../../hooks'
 import { UsersService } from '../index'
 
-export function AddUser() {
+export default function AddUser() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { trigger } = useMutation<UserFormTypes>({

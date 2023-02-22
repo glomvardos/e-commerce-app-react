@@ -8,7 +8,7 @@ import { useModalContext } from '../../common/modal'
 interface Props {
   users: UserTypes[]
 }
-export function UsersTable({ users = [] }: Props) {
+export function UsersTable({ users }: Props) {
   const { t } = useTranslation()
   const { openModalHandler } = useModalContext()
   const columns = useMemo(

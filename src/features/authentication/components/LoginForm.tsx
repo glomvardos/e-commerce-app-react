@@ -11,7 +11,7 @@ import {
   StyledSpinner
 } from '../../../components/UI'
 import { AuthenticationService, formikValues, validationSchema } from '../index'
-import { routes } from '../../../constants/routes'
+import { routeNames } from '../../../constants/routeNames'
 
 export function LoginForm() {
   const { t } = useTranslation()
@@ -25,7 +25,7 @@ export function LoginForm() {
       setIsLoading(true)
       AuthenticationService.login(values.username, values.password)
         .then(() => {
-          navigate(routes.home)
+          navigate(routeNames.home)
           setIsLoading(false)
         })
         .catch((error) => {
