@@ -10,14 +10,14 @@ class UsersService extends BaseApi implements UsersServiceInterface {
     return await this.get<UserTypes[]>('/users/user/')
   }
 
-  public async createUser(values:UserFormTypes): Promise<AxiosResponse | null> {
+  public async createUser(data:FormData): Promise<AxiosResponse | null> {
     return await this.post('/users/user/', {
-      username: values.username,
-      first_name: values.firstname,
-      last_name: values.lastname,
-      email: values.email,
-      user_role: values.role,
-      password: values.password
+      first_name: data.get('firstname'),
+      last_name: data.get('lastname'),
+      username: data.get('username'),
+      email: data.get('email'),
+      user_role: data.get('role'),
+      password: data.get('password')
     })
   }
 

@@ -19,3 +19,7 @@ export * from './interfaces/user-form'
 
 // loaders
 export { loader as usersLoader } from './pages/DisplayUsers'
+
+// actions
+export { action as createUserAction } from './pages/AddUser'
+export { action as deleteUserAction } from './components/UsersTable'

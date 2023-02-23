@@ -26,7 +26,6 @@ function App() {
         autoClose={2500}
         pauseOnFocusLoss={false}
         transition={Slide}
-
       />
       <RenderIf isTrue={process.env.NODE_ENV === 'development'}>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

@@ -33,6 +33,8 @@ abstract class BaseApi {
 
   protected async delete(url: string): Promise<AxiosResponse | null> {
     try {
+      // eslint-disable-next-line no-promise-executor-return
+      await new Promise((resolve) => setTimeout(resolve, 2000))
       return await axiosInstance.delete(url)
     } catch (error) {
       if (axios.isAxiosError(error)) {

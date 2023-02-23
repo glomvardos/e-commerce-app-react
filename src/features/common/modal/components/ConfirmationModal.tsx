@@ -2,14 +2,12 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { TiWarning } from 'react-icons/ti'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
-import { AxiosResponse } from 'axios'
-import { useMutation } from '../../../../hooks'
+import { useNavigation, useSubmit } from 'react-router-dom'
+import { useEffect } from 'react'
 import { BaseModal, StyledModalButton, useModalContext } from '../index'
-import { ResourceIdType } from '../../../../interfaces'
 
 interface Props {
-  deleteFn: ({ id }: ResourceIdType) => Promise<AxiosResponse | null>
-  service: any
+  actionRoute?: string
 }
 
 const StyledContainer = styled.div`
@@ -39,25 +37,20 @@ const StyledWrapper = styled.div`
   width: 100%;
   gap: 0.7rem;
 `
-export function ConfirmationModal({ deleteFn, service }: Props) {
+export function ConfirmationModal({ actionRoute }:Props) {
   const { t } = useTranslation()
   const { modalState, closeModalHandler } = useModalContext()
-
-  const { trigger: deleteResource } = useMutation<ResourceIdType>({
-    mutateKey: modalState.mutateKey,
-    mutateFn: (_, { arg }) => deleteFn.bind(service, arg)
-  })
-
-  const onDeleteHandler = async () => {
-    await deleteResource(
-      { id: modalState.resourceId! },
-      {
-        onSuccess: () => {
-          closeModalHandler()
-        }
-      }
-    )
+  const navigation = useNavigation()
+  const submit = useSubmit()
+  const onDeleteHandler = () => {
+    submit({ id: modalState.resourceId!.toString() }, { method: 'delete', action: actionRoute ?? undefined })
   }
+
+  useEffect(() => {
+    if (navigation.state === 'loading') {
+      closeModalHandler()
+    }
+  }, [navigation.state, closeModalHandler])
 
   return (
     <BaseModal
@@ -83,6 +76,7 @@ export function ConfirmationModal({ deleteFn, service }: Props) {
             {t('noCancel')}
           </StyledModalButton>
           <StyledModalButton
+            disabled={navigation.state === 'submitting'}
             onClick={onDeleteHandler}
             background="var(--error)"
             type="button"

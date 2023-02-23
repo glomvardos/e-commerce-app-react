@@ -1,16 +1,19 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { redirect } from 'react-router-dom'
+import { QueryClient } from 'react-query'
 import { UserTypes } from '../../authentication'
 import { ReactTable, TableActions } from '../../../components/Table'
-import { CellValue, OriginalRowTypes } from '../../../interfaces'
+import { ActionTypes, CellValue, OriginalRowTypes } from '../../../interfaces'
 import { useModalContext } from '../../common/modal'
+import usersService from '../services/users-service'
 
 interface Props {
   users: UserTypes[]
 }
 export function UsersTable({ users }: Props) {
   const { t } = useTranslation()
-  const { openModalHandler } = useModalContext()
+  const { openModalHandler, closeModalHandler } = useModalContext()
   const columns = useMemo(
     () => [
       {
@@ -56,4 +59,9 @@ export function UsersTable({ users }: Props) {
   )
 }
 
-export default UsersTable
+export const action = (queryClient: QueryClient) => async ({ request }: ActionTypes) => {
+  const data = await request.formData()
+  await usersService.deleteUser({ id: data.get('id') as unknown as number })
+  await queryClient.invalidateQueries('users')
+  return null
+}

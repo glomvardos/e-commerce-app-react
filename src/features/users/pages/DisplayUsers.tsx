@@ -15,6 +15,7 @@ import { UsersTable } from '../index'
 import { UserTypes } from '../../authentication'
 import { routeNames } from '../../../constants/routeNames'
 import { ConfirmationModal } from '../../common/modal'
+import { ActionTypes } from '../../../interfaces'
 
 const usersQuery = () => ({
   queryKey: 'users',
@@ -34,7 +35,7 @@ export function DisplayUsers() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { users } = useLoaderData() as { users: UserTypes[] };
-  const { isLoading: boolean } = useGetData<UserTypes[]>(
+  const { data } = useGetData<UserTypes[]>(
     {
       ...usersQuery(),
       initialData: users
@@ -44,10 +45,7 @@ export function DisplayUsers() {
   return (
 
     <>
-      <ConfirmationModal
-        service={usersService}
-        deleteFn={usersService.deleteUser}
-      />
+      <ConfirmationModal />
       <StyledPageHeader>
         <StyledText fontSize={40} fontWeight="500">
           {t('users')}
@@ -62,12 +60,9 @@ export function DisplayUsers() {
       </StyledPageHeader>
       <Suspense fallback={<p>LOADING</p>}>
         <Await resolve={users}>
-          {(loadedUsers) => (
-            <UsersTable users={loadedUsers} />
-          )}
+          <UsersTable users={data} />
         </Await>
       </Suspense>
     </>
-
   )
 }
