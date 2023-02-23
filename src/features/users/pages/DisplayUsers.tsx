@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { useNavigate, defer, Await } from 'react-router-dom'
+import {
+  useNavigate, defer, Await, useLoaderData
+} from 'react-router-dom'
 import { QueryClient } from 'react-query'
 import { Suspense } from 'react'
 import { useGetData } from '../../../hooks'
@@ -19,11 +21,11 @@ const usersQuery = () => ({
   queryFn: () => usersService.getUsers()
 });
 
-export const loader = (queryClient: QueryClient) => async () => {
+export const loader = (queryClient: QueryClient) => () => {
   const query = usersQuery();
   return (
     defer({
-      users: queryClient.getQueryData(query.queryKey) ?? await queryClient.fetchQuery(query)
+      users: queryClient.getQueryData(query.queryKey) ?? queryClient.fetchQuery(query)
     })
   );
 }
@@ -31,35 +33,41 @@ export const loader = (queryClient: QueryClient) => async () => {
 export function DisplayUsers() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { data: users, isLoading: boolean } = useGetData<UserTypes[]>(usersQuery())
+  const { users } = useLoaderData() as { users: UserTypes[] };
+  const { isLoading: boolean } = useGetData<UserTypes[]>(
+    {
+      ...usersQuery(),
+      initialData: users
+    }
+  )
 
   return (
-    <Suspense fallback={<p>LOADING</p>}>
-      <Await resolve={users}>
-        {(loadedUsers) => (
-          <>
 
-            <ConfirmationModal
-              service={usersService}
-              deleteFn={usersService.deleteUser}
-            />
-            <StyledPageHeader>
-              <StyledText fontSize={40} fontWeight="500">
-                {t('users')}
-              </StyledText>
-              <StyledButton
-                type="button"
-                onClick={() => navigate(routeNames.addUser)}
-                color="primary"
-              >
-                {t('addUser')}
-              </StyledButton>
-            </StyledPageHeader>
+    <>
+      <ConfirmationModal
+        service={usersService}
+        deleteFn={usersService.deleteUser}
+      />
+      <StyledPageHeader>
+        <StyledText fontSize={40} fontWeight="500">
+          {t('users')}
+        </StyledText>
+        <StyledButton
+          type="button"
+          onClick={() => navigate(routeNames.addUser)}
+          color="primary"
+        >
+          {t('addUser')}
+        </StyledButton>
+      </StyledPageHeader>
+      <Suspense fallback={<p>LOADING</p>}>
+        <Await resolve={users}>
+          {(loadedUsers) => (
             <UsersTable users={loadedUsers} />
-          </>
+          )}
+        </Await>
+      </Suspense>
+    </>
 
-        )}
-      </Await>
-    </Suspense>
   )
 }

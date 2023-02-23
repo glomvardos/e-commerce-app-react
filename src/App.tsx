@@ -8,7 +8,13 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { routes } from './routes/routes'
 import { RenderIf } from './components/UI/RenderIf'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 20000
+    }
+  }
+});
 function App() {
   return (
     <QueryClientProvider client={queryClient}>

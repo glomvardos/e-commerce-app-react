@@ -6,8 +6,8 @@ abstract class BaseApi {
   protected async get<T>(url: string): Promise<T | null> {
     try {
       const response = await axiosInstance.get(url)
-      // // eslint-disable-next-line no-promise-executor-return
-      // await new Promise((resolve) => setTimeout(resolve, 3000))
+      // eslint-disable-next-line no-promise-executor-return
+      await new Promise((resolve) => setTimeout(resolve, 2000))
       return response.data as T
     } catch (error) {
       if (axios.isAxiosError(error)) {

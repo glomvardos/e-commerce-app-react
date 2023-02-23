@@ -5,7 +5,7 @@ import {
 // import { ServerError } from '../interfaces/api';
 import { tokenMethods } from '../features/authentication'
 
-interface Props {
+interface Props<T> {
   queryKey: any;
   queryFn: QueryFunction<any, string>;
   disabled?: boolean;
@@ -14,6 +14,7 @@ interface Props {
   cacheTime?: number;
   refetchInterval?: number | false;
   refetchIntervalInBackground?: boolean;
+  initialData?: T
 }
 
 interface DataTypes<T> {
@@ -35,8 +36,9 @@ export const useGetData = <T extends unknown>({
   refetchOnMount = true,
   refetchInterval = false,
   refetchIntervalInBackground = false,
-  cacheTime = 300000
-}: Props) => {
+  cacheTime = 300000,
+  initialData
+}: Props<T>) => {
   const {
     isLoading,
     isFetching,
@@ -50,7 +52,8 @@ export const useGetData = <T extends unknown>({
     refetchOnMount,
     cacheTime,
     refetchInterval,
-    refetchIntervalInBackground
+    refetchIntervalInBackground,
+    initialData
   });
 
   // const serverError = error as AxiosError<ServerError>;
