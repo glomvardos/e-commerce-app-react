@@ -3,11 +3,14 @@ import { UsersServiceInterface } from './users-service.interface'
 import { BaseApi } from '../../../services'
 import { UserTypes } from '../../authentication'
 import { ResourceIdType } from '../../../interfaces'
-import { UserFormTypes } from '../interfaces/user-form'
 
 class UsersService extends BaseApi implements UsersServiceInterface {
   public async getUsers(): Promise<UserTypes[] | null> {
     return await this.get<UserTypes[]>('/users/user/')
+  }
+
+  public async getSingleUser(id:string): Promise<UserTypes | null> {
+    return await this.get<UserTypes>(`/users/user/${id}/`)
   }
 
   public async createUser(data:FormData): Promise<AxiosResponse | null> {

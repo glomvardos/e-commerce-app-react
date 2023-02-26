@@ -30,6 +30,7 @@ export function LoginForm() {
         })
         .catch((error) => {
           toast.error(error.message)
+          localStorage.clear()
           setIsLoading(false)
         })
     }

@@ -26,22 +26,27 @@ export function UserForm({ user }:Props) {
           name="username"
           background={backgroundLight}
           placeholder={t<string>('username')}
+          defaultValue={user?.username ?? ''}
         />
         <StyledInput
           name="firstname"
           background={backgroundLight}
           placeholder={t<string>('firstname')}
+          defaultValue={user?.first_name ?? ''}
         />
         <StyledInput
           name="lastname"
           background={backgroundLight}
           placeholder={t<string>('lastname')}
+          defaultValue={user?.last_name ?? ''}
         />
         <StyledInput
           type="email"
           name="email"
           background={backgroundLight}
           placeholder={t<string>('email')}
+          defaultValue={user?.email ?? ''}
+
         />
         <StyledSelect name="role" background={backgroundLight}>
           {userRoleOptions.map((role) => (

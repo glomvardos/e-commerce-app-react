@@ -1,5 +1,7 @@
 // Pages
 export { DisplayUsers } from './pages/DisplayUsers'
+export { AddUser } from './pages/AddUser'
+export { EditUser } from './pages/EditUser'
 
 // Components
 export { UsersTable } from './components/UsersTable'
@@ -19,7 +21,9 @@ export * from './interfaces/user-form'
 
 // loaders
 export { loader as usersLoader } from './pages/DisplayUsers'
+export { loader as userLoader } from './pages/EditUser'
 
 // actions
 export { action as createUserAction } from './pages/AddUser'
+export { action as editUserAction } from './pages/EditUser'
 export { action as deleteUserAction } from './components/UsersTable'

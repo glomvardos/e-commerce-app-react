@@ -1,18 +1,20 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { redirect } from 'react-router-dom'
+import { redirect, useNavigate } from 'react-router-dom'
 import { QueryClient } from 'react-query'
 import { UserTypes } from '../../authentication'
 import { ReactTable, TableActions } from '../../../components/Table'
 import { ActionTypes, CellValue, OriginalRowTypes } from '../../../interfaces'
 import { useModalContext } from '../../common/modal'
 import usersService from '../services/users-service'
+import { routeNames } from '../../../constants/routeNames'
 
 interface Props {
   users: UserTypes[]
 }
 export function UsersTable({ users }: Props) {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { openModalHandler, closeModalHandler } = useModalContext()
   const columns = useMemo(
     () => [
@@ -41,7 +43,7 @@ export function UsersTable({ users }: Props) {
         Header: t('actions'),
         Cell: ({ row: { original } }: OriginalRowTypes<UserTypes>) => (
           <TableActions
-            onClickHandlerEdit={() => {}}
+            onClickHandlerEdit={() => navigate(`${original.id}/${routeNames.editUser}`)}
             onClickHandlerDelete={() => openModalHandler({
               message: 'deleteUserMessage',
               resourceId: original.id,

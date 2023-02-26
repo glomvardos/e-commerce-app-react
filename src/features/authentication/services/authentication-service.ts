@@ -16,7 +16,6 @@ class AuthenticationService
     if (response?.data) {
       tokenMethods.saveToken(response.data as TokenServiceTypes)
       const user = await this.getAuthUser()
-
       if (user) {
         userMethods.setUser(user)
       }

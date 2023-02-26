@@ -15,7 +15,7 @@ import { UsersTable } from '../index'
 import { UserTypes } from '../../authentication'
 import { routeNames } from '../../../constants/routeNames'
 import { ConfirmationModal } from '../../common/modal'
-import { ActionTypes } from '../../../interfaces'
+import { ReFetchData } from '../../../components/ErrorUI'
 
 const usersQuery = () => ({
   queryKey: 'users',
@@ -55,11 +55,11 @@ export function DisplayUsers() {
           onClick={() => navigate(routeNames.addUser)}
           color="primary"
         >
-          {t('addUser')}
+          {t('editUser')}
         </StyledButton>
       </StyledPageHeader>
       <Suspense fallback={<p>LOADING</p>}>
-        <Await resolve={users}>
+        <Await resolve={users} errorElement={<ReFetchData message="failedToLoadUsers" />}>
           <UsersTable users={data} />
         </Await>
       </Suspense>
