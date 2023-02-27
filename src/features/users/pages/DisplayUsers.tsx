@@ -55,7 +55,7 @@ export function DisplayUsers() {
           onClick={() => navigate(routeNames.addUser)}
           color="primary"
         >
-          {t('editUser')}
+          {t('addUser')}
         </StyledButton>
       </StyledPageHeader>
       <Suspense fallback={<p>LOADING</p>}>

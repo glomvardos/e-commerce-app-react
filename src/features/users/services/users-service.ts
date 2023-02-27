@@ -24,6 +24,24 @@ class UsersService extends BaseApi implements UsersServiceInterface {
     })
   }
 
+  public async editUser(data:FormData, id: string): Promise<AxiosResponse | null> {
+    const formData = {
+      first_name: data.get('firstname'),
+      last_name: data.get('lastname'),
+      username: data.get('username'),
+      email: data.get('email'),
+      user_role: data.get('role'),
+      password: data.get('password')
+    }
+
+    if (data.get('password') === '') {
+      // @ts-ignore
+      delete formData.password
+    }
+
+    return await this.patch(`/users/user/${id}/`, formData)
+  }
+
   public async deleteUser({
     id
   }: ResourceIdType): Promise<AxiosResponse | null> {

@@ -32,8 +32,11 @@ export const loader = (queryClient: QueryClient) => ({ params }:ActionTypes) => 
 export const action = (queryClient: QueryClient) => async ({ request, params }: ActionTypes) => {
   const data = await request.formData()
   try {
-    await usersService.createUser(data)
-    await queryClient.invalidateQueries('users')
+    await usersService.editUser(data, params.id)
+    Promise.all([
+      queryClient.invalidateQueries('users'),
+      queryClient.invalidateQueries(`user ${params.id}`)
+    ])
     return redirect(routeNames.home)
   } catch (error: any) {
     exceptionToastMessage(error)
@@ -51,7 +54,7 @@ export function EditUser() {
       initialData: user
     }
   )
-  console.log(user)
+
   return (
     <>
       <BackButton />
@@ -60,7 +63,7 @@ export function EditUser() {
       </StyledText>
       <Suspense fallback={<p>LOADING...</p>}>
         <Await resolve={user} errorElement={<ReFetchData message="failedToLoadUser" />}>
-          <UserForm user={data} />
+          <UserForm method="patch" user={data} />
         </Await>
       </Suspense>
     </>

@@ -31,6 +31,20 @@ abstract class BaseApi {
     return null
   }
 
+  protected async patch(
+    url: string,
+    data: unknown
+  ): Promise<AxiosResponse | null> {
+    try {
+      return await axiosInstance.patch(url, data)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        exception(error)
+      }
+    }
+    return null
+  }
+
   protected async delete(url: string): Promise<AxiosResponse | null> {
     try {
       // eslint-disable-next-line no-promise-executor-return

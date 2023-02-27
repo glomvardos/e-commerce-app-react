@@ -4,6 +4,6 @@ export interface UserFormTypes {
   last_name: string
   email: string
   user_role: string
-  password: string
+  password?: string
   confirmPassword?: string
 }

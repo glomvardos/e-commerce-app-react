@@ -18,7 +18,7 @@ export function AddUser() {
       <StyledText fontSize={40} fontWeight="500">
         {t('createUser')}
       </StyledText>
-      <UserForm />
+      <UserForm method="post" />
     </>
 
   )

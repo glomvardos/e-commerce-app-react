@@ -8,19 +8,20 @@ import {
   StyledInput, StyledSelect
 } from '../../../components/Form'
 import { UserTypes } from '../../authentication'
-import { UserFormTypes, userRoleOptions, usersValidationSchema } from '../index'
+import { userRoleOptions } from '../index'
 
 const backgroundLight = 'var(--light)'
 
 interface Props {
+  method: 'patch' | 'post'
   user? : UserTypes
 }
-export function UserForm({ user }:Props) {
+export function UserForm({ method, user }:Props) {
   const { t } = useTranslation()
 
   return (
 
-    <Form method="post">
+    <Form method={method}>
       <StyledFormLayout>
         <StyledInput
           name="username"
@@ -48,7 +49,7 @@ export function UserForm({ user }:Props) {
           defaultValue={user?.email ?? ''}
 
         />
-        <StyledSelect name="role" background={backgroundLight}>
+        <StyledSelect name="role" background={backgroundLight} defaultValue={user?.user_role ?? 'ADMIN'}>
           {userRoleOptions.map((role) => (
             <option key={role.id} value={role.value}>
               {t(role.label)}
@@ -68,7 +69,7 @@ export function UserForm({ user }:Props) {
           placeholder={t<string>('confirmPassword')}
         />
       </StyledFormLayout>
-      <FormButtons primaryText="createUser" />
+      <FormButtons primaryText={user ? 'editUser' : 'createUser'} />
     </Form>
   );
 }
